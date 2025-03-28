@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <!-- Adding CSS/Stylesheet -->
+    <style>
+        body {
+            align-items: center center;
+            color: black;
+            font-family: Copperplate, Papyrus, fantasy;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 125;
+        }
+
+        h2 {
+            font-size: 75px;
+        }
+
+        p {
+            font-size: 75px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="time"></h1>
+    <h2 id="day"></h2>
+    <p id="demo"></p>
+    <iframe width="200" height="200" src="https://www.youtube.com/embed/R1s5C4qclPg?autoplay=1&control=1">
+    </iframe>
+    <!-- Adding JavaScript code -->
+    <script>
+        // Call function every second to update the countdown
+        let x = setInterval(function () {
+            const date1 = new Date('2024-08-14T08:00:00'); // Fixed date (August 14, 2024)
+            const date2 = new Date(); // Current date and time
+            const diffTime = date2 - date1; // Time difference in milliseconds
+
+            // Calculate the number of days
+            const i = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+            // Handle suffix for the day count (1st, 2nd, 3rd, etc.)
+            let l = 'th';  // Default suffix
+            let lastDigit = i % 10; // Get the last digit of the day number
+
+            // Special case for 11th, 12th, 13th
+            if (i % 100 >= 11 && i % 100 <= 13) {
+                l = 'th';
+            } else if (lastDigit == 1) {
+                l = 'st';
+            } else if (lastDigit == 2) {
+                l = 'nd';
+            } else if (lastDigit == 3) {
+                l = 'rd';
+            }
+
+            // Display the day count with suffix
+            document.getElementById("day").innerHTML = "The " + i + l + " Day";
+
+            // Display the part of the day based on the current hour
+            let h = new Date().getHours();
+            if (h >= 6 && h <= 11) {
+                document.getElementById("time").innerHTML = "Dawn of";
+            }
+            else if (h >= 12 && h <= 17) {
+                document.getElementById("time").innerHTML = "Afternoon of";
+            }
+            else if (h >= 18 && h <= 23) {
+                document.getElementById("time").innerHTML = "Dusk of";
+            }
+            else {
+                document.getElementById("time").innerHTML = "Night of";
+            }
+
+            // Deadline for countdown timer
+            let deadline = new Date("2025-05-22T13:30:00").getTime();
+            let now = new Date().getTime();
+
+            // Calculate the difference
+            let t = deadline - now;
+
+            // Calculate remaining time
+            let days = Math.floor(t / (1000 * 60 * 60 * 24));
+            let hours = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((t % (1000 * 60)) / 1000);
+
+            // Display remaining time
+            document.getElementById("demo").innerHTML =
+                '-' + days + "d " + hours + "h " + minutes + "m " + seconds + "s " + 'Remain-';
+            //If the countdown has 3 min and 10 seconds left play “Schools Out for Summer”
+            if (t < 190000) {
+            }
+
+            // If the countdown has ended, display a message
+            if (t < 0) {
+                clearInterval(x);
+                document.getElementById("demo").innerHTML = "SCHOOLS OUT!";
+            }
+
+        }, 1000);
+    </script>
+</body>
+</html>
+
+
