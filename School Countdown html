@@ -28,7 +28,7 @@
     <h1 id="time"></h1>
     <h2 id="day"></h2>
     <p id="demo"></p>
-    <iframe width="200" height="200" src="https://www.youtube.com/embed/R1s5C4qclPg?autoplay=1&control=1">
+    <iframe width="200" height="200" src="https://www.youtube.com/embed/R1s5C4qclPg?playlist=R1s5C4qclPg&autoplay=1&control=1&loop=1"">
     </iframe>
     <!-- Adding JavaScript code -->
     <script>
