@@ -65,7 +65,7 @@
                 document.getElementById("time").innerHTML = "Night of";
             }
 
-            let deadline = new Date("2025-03-28T23:11:00").getTime();
+            let deadline = new Date("2025-05-22T13:30:00").getTime();
             let now = new Date().getTime();
             let t = deadline - now;
             let days = Math.floor(t / (1000 * 60 * 60 * 24));
