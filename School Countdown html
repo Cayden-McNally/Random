@@ -31,7 +31,8 @@
     <h1 id="time"></h1>
     <h2 id="day"></h2>
     <p id="demo"></p>
-    <audio id="countdownAudio" src="https://github.com/Cayden-McNally/Random/raw/refs/heads/main/School%20s%20Out.mp3"></audio>
+    <audio id="SchoolsOut" src="https://github.com/Cayden-McNally/Random/raw/refs/heads/main/School%20s%20Out.mp3"></audio>
+    <audio id="SunsSong" src="https://github.com/Cayden-McNally/Random/raw/refs/heads/main/Sun's%20Song.mp3"></audio>
 
     <script>
         let x = setInterval(function () {
@@ -74,14 +75,18 @@
             let seconds = Math.floor((t % (1000 * 60)) / 1000);
 
             document.getElementById("demo").innerHTML =
-                '-' + days + "d " + hours + "h " + minutes + "m " + seconds + "s " + 'Remain-';
+                '-' + days + "d " + hours + " "+h + "h " + minutes + "m " + seconds + "s " + 'Remain-';
 
             // Play audio when 3 minutes and 10 seconds remain
             if (t <= 190000 ){
-                let audio = document.getElementById("countdownAudio");
+                let audio = document.getElementById("SchoolsOut");
                 audio.play();
             }
-
+            // At 8 A.M. each day play Sun's song
+            if (h===8 && minutes ===0 && seconds ===0 && t>0)  { //only plays once per minute.
+              let jingle = document.getElementById("SunsSong");
+              jingle.play();
+            }
             if (t < 0) {
                 clearInterval(x);
                 document.getElementById("demo").innerHTML = "SCHOOLS OUT!";
