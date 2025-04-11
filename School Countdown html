@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
     <style>
@@ -75,7 +76,7 @@
             let seconds = Math.floor((t % (1000 * 60)) / 1000);
 
             document.getElementById("demo").innerHTML =
-                '-' + days + "d " + hours + " "+h + "h " + minutes + "m " + seconds + "s " + 'Remain-';
+                '-' + days + "d " + hours + "h " + minutes + "m " + seconds + "s " + 'Remain-';
 
             // Play audio when 3 minutes and 10 seconds remain
             if (t <= 190000 ){
